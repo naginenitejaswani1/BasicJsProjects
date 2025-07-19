@@ -37,13 +37,8 @@ addButton.addEventListener('click',() =>{
 // Render Tasks
 
 function renderTasks(){
-    todoList.textContent = '';
-    if(todoList.children.length === 0){
-        todoList.classList.remove('no-items');
-    }
-    else{
-        todoList.classList.add('no-items');
-    }
+    todoList.textContent = '';  
+    
     tasks.forEach((task, index) => {
         console.log(task, index);
         let li = document.createElement('li');
@@ -59,8 +54,22 @@ function renderTasks(){
                         </div>
         `;
         todoList.appendChild(li);
+        updateTodoListStyle();
         
     });
+}
+
+// update TodoList Style
+
+function updateTodoListStyle() {
+
+  console.log("length of lists :", todoList.children.length);
+
+  if (todoList.children.length > 0) {
+    todoList.classList.add("no-items");
+  } else {
+    todoList.classList.remove("no-items");
+  }
 }
 
 
@@ -75,6 +84,8 @@ function onClickDelete(index){
     tasks.splice(index, 1);
     updateLocalStorage();
     renderTasks();
+    updateTodoListStyle(); // checking if tasks are empty removing ul style
+
 }
 
 //edit tasks

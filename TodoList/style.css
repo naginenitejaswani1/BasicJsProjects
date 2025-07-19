@@ -46,7 +46,7 @@ body{
 
 
 .no-items{
-    border: 1px solid #ccc;
+    border: 1px solid rebeccapurple;
     display: flex;
     flex-direction: column;
     justify-content: center;
